@@ -5,13 +5,12 @@ import ApologyDetail from './Components/ApologyDetail';
 import AdminLogin from './Pages/AdminLogin';
 import AdminPanel from './Pages/AdminPanel';
 import ApologyForm from './Components/ApologyForm';
-import AdminRoute from './Components/AdminRoute'; // <-- Make sure this exists
+import AdminRoute from './Components/AdminRoute';
 
 const App = () => {
-  // For example, you might get currentUser from context, or from a global state
+  // Example user object (replace with real auth logic)
   const currentUser = {
-    // Example user object; in real code, you'd get this from your auth provider
-    isAdmin: true,
+    isAdmin: true, // Set to false to test the redirect
   };
 
   return (

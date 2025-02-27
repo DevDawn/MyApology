@@ -76,18 +76,16 @@ const ApologyDetail = () => {
     <>
       <Header />
       <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-br from-pink-50 to-purple-50">
-        {/* Apology Card */}
+    
         <div
           ref={cardRef}
           className="relative bg-white p-8 rounded-xl shadow-lg max-w-md w-full text-center transform transition-all hover:scale-105 border-2 border-pink-100"
         >
-          {/* Decorative Elements */}
           <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center opacity-20">
             <FaHeart className="text-pink-200 text-6xl transform rotate-12" />
             <FaHeart className="text-purple-200 text-6xl transform -rotate-12" />
           </div>
 
-          {/* Apology Content */}
           <div className="relative z-10">
             <FaHeart className="text-pink-200 text-3xl transform rotate-12" />
             <h2 className="text-3xl font-bold mb-4 text-pink-500">
@@ -108,7 +106,6 @@ const ApologyDetail = () => {
           </div>
         </div>
 
-        {/* Actions: Download and Share */}
         <div className="mt-8 flex space-x-4">
           <button
             onClick={downloadCard}
@@ -119,13 +116,12 @@ const ApologyDetail = () => {
           </button>
         </div>
 
-        {/* Shareable Link Section */}
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600 mb-2">Shareable Link:</p>
           <div className="mb-30 flex items-center justify-center">
             <input
               type="text"
-              value={window.location.href} // Current URL
+              value={window.location.href} 
               readOnly
               className="w-64 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-100 text-sm text-gray-700"
             />
@@ -133,7 +129,7 @@ const ApologyDetail = () => {
               onClick={handleCopyLink}
               className="px-4 py-2 bg-pink-500 cursor-pointer hover:bg-pink-600 text-white rounded-r-lg transition duration-200 flex items-center"
             >
-              <FaCopy className="mr-2" /> {/* Copy icon */}
+              <FaCopy className="mr-2" /> 
               Copy
             </button>
           </div>
