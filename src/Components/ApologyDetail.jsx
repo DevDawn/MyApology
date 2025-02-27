@@ -122,7 +122,7 @@ const ApologyDetail = () => {
         {/* Shareable Link Section */}
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600 mb-2">Shareable Link:</p>
-          <div className="flex items-center justify-center">
+          <div className="mb-30 flex items-center justify-center">
             <input
               type="text"
               value={window.location.href} // Current URL
