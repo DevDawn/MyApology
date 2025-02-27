@@ -11,8 +11,8 @@ const AdminLogin = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const adminEmail = 'admin@example.com';
-    const adminPassword = 'admin123';
+    const adminEmail = 'apology@admin.com';
+    const adminPassword = 'Apologise123';
 
     if (email === adminEmail && password === adminPassword) {
       setIsLoading(false);

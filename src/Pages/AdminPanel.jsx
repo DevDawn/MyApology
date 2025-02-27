@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import { FaEye, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const AdminPanel = () => {
   const [apologies, setApologies] = useState([]);
@@ -55,11 +56,12 @@ const AdminPanel = () => {
 
   return (
     <div className="p-8">
-      <h1 className="text-3xl font-bold mb-8">Admin Panel</h1>
-
-      {/* Create Apology Form */}
+       <div className='flex items-center justify-between mb-8'>
+       <h1 className="text-3xl text-pink-500 font-bold mb-8">Admin Panel</h1>
+       <Link to='/' className='px-2 py-3 rounded-lg  text-white cursor-pointer bg-pink-300'>Go Home</Link>
+       </div>
       <div className="mb-8 bg-white p-6 rounded-xl shadow-lg">
-        <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
+        <h2 className="text-3xl font-semibold text-center sm:text-2xl text-gray-800 mb-6">
           Create Your Apology
         </h2>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
@@ -102,7 +104,7 @@ const AdminPanel = () => {
             <div className="mt-4 flex justify-between">
               <button
                 onClick={() => navigate(`/apology/${apology.id}`)}
-                className="flex items-center space-x-2 px-3 py-2 text-pink-500 cursor-pointe rounded-lg transition duration-200"
+                className="flex items-center space-x-2 px-3 py-2 text-pink-500 cursor-pointer rounded-lg transition duration-200"
               >
                 <FaEye />
               </button>

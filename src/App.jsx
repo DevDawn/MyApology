@@ -5,8 +5,15 @@ import ApologyDetail from './Components/ApologyDetail';
 import AdminLogin from './Pages/AdminLogin';
 import AdminPanel from './Pages/AdminPanel';
 import ApologyForm from './Components/ApologyForm';
+import AdminRoute from './Components/AdminRoute'; // <-- Make sure this exists
 
 const App = () => {
+  // For example, you might get currentUser from context, or from a global state
+  const currentUser = {
+    // Example user object; in real code, you'd get this from your auth provider
+    isAdmin: true,
+  };
+
   return (
     <div
       className="
@@ -23,9 +30,18 @@ const App = () => {
           <Route path="/create-apology" element={<ApologyForm />} />
           <Route path="/apology/:id" element={<ApologyDetail />} />
 
-          {/* Admin Routes */}
+          {/* Admin Login */}
           <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/admin-panel" element={<AdminPanel />} />
+
+          {/* Protected Admin Route */}
+          <Route
+            path="/admin-panel"
+            element={
+              <AdminRoute user={currentUser}>
+                <AdminPanel />
+              </AdminRoute>
+            }
+          />
         </Routes>
       </Router>
     </div>
