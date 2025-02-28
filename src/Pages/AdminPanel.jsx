@@ -14,7 +14,7 @@ const AdminPanel = () => {
   const fetchApologies = async () => {
     const { data, error } = await supabase
       .from('apologies')
-      .select('*'); // Ensure you select created_at if you want to filter by date
+      .select('*');
     if (error) {
       console.error('Error fetching apologies:', error);
     } else {
@@ -22,7 +22,6 @@ const AdminPanel = () => {
     }
   };
 
-  // Delete an apology
   const deleteApology = async (id) => {
     const { error } = await supabase
       .from('apologies')
@@ -55,12 +54,9 @@ const AdminPanel = () => {
     fetchApologies();
   }, []);
 
-  // Calculate totals
   const totalApologies = apologies.length;
 
-  // Filter apologies created "today"
-  // This depends on having a 'created_at' column in your table
-  const todayString = new Date().toISOString().split('T')[0]; // e.g. '2023-05-17'
+  const todayString = new Date().toISOString().split('T')[0];
   const totalToday = apologies.filter((apology) => {
     if (!apology.created_at) return false; // If missing created_at, skip
     return apology.created_at.split('T')[0] === todayString;
@@ -68,7 +64,6 @@ const AdminPanel = () => {
 
   return (
     <div className="p-8">
-      {/* Top Bar */}
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl text-pink-500 font-bold">Admin Panel</h1>
         <Link
@@ -79,9 +74,7 @@ const AdminPanel = () => {
         </Link>
       </div>
 
-      {/* Greeting & Create Form in a responsive row */}
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Greeting Card */}
         <div className="bg-white rounded-xl p-6 w-full md:w-1/2 shadow-lg">
           <h2 className="text-3xl font-bold text-pink-500 mb-2 mt-10">
             Welcome, Admin!
@@ -99,7 +92,6 @@ const AdminPanel = () => {
           </div>
         </div>
 
-        {/* Right: Create Apology Form */}
         <div className="bg-white p-6 rounded-xl shadow-lg w-full md:w-1/2">
           <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
             Create Your Apology
@@ -130,7 +122,6 @@ const AdminPanel = () => {
         </div>
       </div>
 
-      {/* Apologies List */}
       <div className="mt-8">
         <h2 className="text-2xl font-bold mb-4">All Apologies</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -139,7 +130,7 @@ const AdminPanel = () => {
               key={apology.id}
               className="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-200"
             >
-              <h3 className="text-xl font-bold text-gray-800">
+              <h3 className="text-xl font-bold text-pink-400">
                 {apology.recipient}
               </h3>
               <p className="text-gray-700 mt-2">{apology.message}</p>
