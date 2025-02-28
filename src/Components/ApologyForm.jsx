@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../Components/Header';
 import { supabase } from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../Components/Footer';
 
 const ApologyForm = () => {
   const [formData, setFormData] = useState({
@@ -57,7 +58,7 @@ const ApologyForm = () => {
   return (
     <>
       <Header />
-      <div className="flex justify-center items-center mt-20 px-4">
+      <div className="min-h-screen flex justify-center items-center px-4">
         <form
           onSubmit={handleSubmit}
           className="bg-white rounded-xl shadow-lg p-8 w-full max-w-lg"
@@ -107,6 +108,7 @@ const ApologyForm = () => {
           </button>
         </form>
       </div>
+      <Footer />
     </>
   );
 };

@@ -75,7 +75,7 @@ const ApologyDetail = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-br from-pink-50 to-purple-50">
+      <div className="flex flex-col items-center mt-20 justify-center min-h-screen p-4 bg-gradient-to-br from-pink-50 to-purple-50">
     
         <div
           ref={cardRef}
