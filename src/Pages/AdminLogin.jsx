@@ -28,25 +28,18 @@ const AdminLogin = () => {
   };
 
   const handleCancel = () => {
-    navigate('/'); // Go back to homepage
+    navigate('/');
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-pink-50 p-4">
-      {/* Container */}
       <div className="bg-white rounded-xl shadow-lg overflow-hidden max-w-4xl w-full flex flex-col md:flex-row">
-        
-        
-        <div className="md:w-1/2 bg-pink-100 p-6 flex flex-col items-center justify-center relative">
-         
-
-
+        <div className="hidden md:flex md:w-1/2 bg-pink-100 p-6 flex-col items-center justify-center relative">
           <img
             src="/loginimage.png" 
             alt="Login illustration"
             className="max-w-full h-auto"
           />
-
           <h3 className="mt-4 text-xl font-bold text-pink-500">
             Welcome, Admin!
           </h3>
@@ -55,21 +48,18 @@ const AdminLogin = () => {
           </p>
         </div>
 
-        {/* Form Section */}
-        <div className="md:w-1/2 p-8 flex flex-col justify-center">
-        <button
+        {/* Right: Form Section */}
+        <div className="md:w-1/2 p-8 flex flex-col justify-center relative">
+          <button
             onClick={handleCancel}
-            className="absolute top-4 right-4 text-pink-500  cursor-pointer hover:text-pink-600 transition-colors"
+            className="absolute top-4 right-4 text-pink-500 cursor-pointer hover:text-pink-600 transition-colors"
           >
             <FaTimes size={24} />
           </button>
           <h2 className="text-3xl font-bold mb-6 text-center text-pink-400">
             Admin Login
           </h2>
-          {error && (
-            <p className="text-red-500 text-center mb-4">{error}</p>
-          )}
-
+          {error && <p className="text-red-500 text-center mb-4">{error}</p>}
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label htmlFor="email" className="block text-gray-700 mb-1">
@@ -78,20 +68,22 @@ const AdminLogin = () => {
               <input
                 type="email"
                 id="email"
-                value={email} placeholder='user@email.com'
+                value={email}
+                placeholder="user@email.com"
                 onChange={(e) => setEmail(e.target.value)}
                 required 
                 className="w-full px-4 py-2 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-100"
               />
             </div>
             <div>
-              <label htmlFor="password"  className="block text-gray-700 mb-1">
+              <label htmlFor="password" className="block text-gray-700 mb-1">
                 Password
               </label>
-              <input placeholder='********'
+              <input
                 type="password"
                 id="password"
                 value={password}
+                placeholder="********"
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className="w-full px-4 py-2 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-100"
