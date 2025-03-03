@@ -37,7 +37,6 @@ const AdminLogin = () => {
         <div className="hidden md:flex md:w-1/2 bg-pink-100 p-6 flex-col items-center justify-center relative">
           <img
             src="/loginimage.png" 
-            alt="Login illustration"
             className="max-w-full h-auto"
           />
           <h3 className="mt-4 text-xl font-bold text-pink-500">
@@ -48,7 +47,6 @@ const AdminLogin = () => {
           </p>
         </div>
 
-        {/* Right: Form Section */}
         <div className="md:w-1/2 p-8 flex flex-col justify-center relative">
           <button
             onClick={handleCancel}

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import { toPng } from 'html-to-image';
-import { FaDownload, FaHeart, FaCopy } from 'react-icons/fa';
+import { FaDownload, FaHeart, FaCopy, FaCheck, FaTimes } from 'react-icons/fa';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 
@@ -47,15 +47,32 @@ const ApologyDetail = () => {
   };
 
   const handleCopyLink = () => {
-    const url = window.location.href; 
+    const url = window.location.href;
     navigator.clipboard
       .writeText(url)
       .then(() => {
-        alert('Link copied to clipboard!'); 
+        alert('Link copied to clipboard!');
       })
       .catch((err) => {
         console.error('Failed to copy link:', err);
       });
+  };
+
+  // Updated reply function: chain .select() so that updated row is returned
+  const updateReply = async (reply) => {
+    const { data, error } = await supabase
+      .from('apologies')
+      .update({ reply_status: reply })
+      .eq('id', id)
+      .select() // This is required to return the updated record.
+      .single();
+
+    if (error) {
+      console.error('Error updating reply:', error);
+    } else {
+      console.log('Reply updated:', data.reply_status);
+      setApology(data);
+    }
   };
 
   if (loading) {
@@ -74,10 +91,9 @@ const ApologyDetail = () => {
     <>
       <Header />
       <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-br from-pink-50 to-purple-50">
-
         <div
           ref={cardRef}
-          className="relative bg-white p-8 rounded-xl shadow-lg max-w-md w-full text-center transform transition-all hover:scale-105 border-2 border-pink-100"
+          className="relative bg-white p-8 rounded-xl shadow-lg max-w-md w-full text-center transform transition-all hover:scale-105 border-2 border-pink-100 mx-auto"
         >
           <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center opacity-20">
             <FaHeart className="text-pink-200 text-6xl transform rotate-12" />
@@ -96,7 +112,6 @@ const ApologyDetail = () => {
               <p className="text-sm text-gray-600 mb-4">{apology.details}</p>
             )}
           </div>
-
           <div className="flex justify-center space-x-10">
             <FaHeart className="text-pink-200 text-3xl transform rotate-12" />
             <FaHeart className="text-blue-200 text-3xl transform rotate-12" />
@@ -130,6 +145,37 @@ const ApologyDetail = () => {
               Copy
             </button>
           </div>
+        </div>
+
+        {/* Reply Section */}
+        <div className="mt-8 text-center">
+          {apology.reply_status ? (
+            <p className="text-lg font-semibold text-gray-700">
+              {apology.recipient} {apology.reply_status} this apology.
+            </p>
+          ) : (
+            <>
+              <h3 className="text-xl font-bold text-gray-800 mb-4">
+                Reply to this Apology
+              </h3>
+              <div className="flex justify-center space-x-4">
+                <button
+                  onClick={() => updateReply('accepted')}
+                  className="px-4 py-2 bg-green-500 hover:bg-green-600 cursor-pointer text-white rounded-lg transition duration-200 flex items-center space-x-2"
+                >
+                  <FaCheck className="mr-2" />
+                  Accept
+                </button>
+                <button
+                  onClick={() => updateReply('declined')}
+                  className="px-4 py-2 bg-red-500 cursor-pointer hover:bg-red-600 text-white rounded-lg transition duration-200 flex items-center space-x-2"
+                >
+                  <FaTimes className="mr-2" />
+                  Decline
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
       <Footer />

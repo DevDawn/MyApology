@@ -11,7 +11,7 @@ const HomePage = () => {
         <span className="p-2 mb-4 rounded-md border border-pink-400 text-sm font-medium tracking-wide text-pink-400">
           Welcome to MyApology
         </span>
-        <h1 className="text-4xl font-bold text-pink-300 mb-4">
+        <h1 className="text-4xl font-bold text-pink-400 mb-4">
           Transform Your Apologies Into Meaningful Connections
         </h1>
         <p className="text-lg text-gray-600 mb-6">
@@ -19,7 +19,7 @@ const HomePage = () => {
         </p>
         <Link
           to="/create-apology"
-          className="px-6 py-3 bg-pink-300 hover:bg-pink-400 text-white rounded-lg cursor-pointer shadow transition duration-300"
+          className="px-6 py-3 bg-pink-400 text-white rounded-lg cursor-pointer shadow transition duration-300"
         >
           Create an Apology
         </Link>

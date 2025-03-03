@@ -10,7 +10,6 @@ const AdminPanel = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Fetch apologies
   const fetchApologies = async () => {
     const { data, error } = await supabase
       .from('apologies')

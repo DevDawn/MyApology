@@ -11,13 +11,13 @@ const App = () => {
   return (
     <AnimatedBackground>
       <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/create-apology" element={<ApologyForm />} />
-          <Route path="/apology/:id" element={<ApologyDetail />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/admin-panel" element={<AdminPanel />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/create-apology" element={<ApologyForm />} />
+            <Route path="/apology/:id" element={<ApologyDetail />} />
+            <Route path="/admin-login" element={<AdminLogin />} />
+            <Route path="/admin-panel" element={<AdminPanel />} />
+          </Routes>
       </Router>
     </AnimatedBackground>
   );

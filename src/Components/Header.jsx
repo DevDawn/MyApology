@@ -6,7 +6,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   return (
-    <header className="fixed top-0 left-0 w-full backdrop-blur-md shadow-xs z-50">
+    <header className="top-0 left-0 w-full backdrop-blur-md shadow-xs z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold text-pink-400">
           MyApology
